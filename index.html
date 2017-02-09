@@ -10,6 +10,9 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="lib/swiper/swiper-3.3.1.min.css">
+	<link rel="stylesheet" type="text/css" href="css/book.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+    <script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
     <style>
         .swiper-container {
             width: 100%;
@@ -21,11 +24,44 @@
             background-size: cover;
             width: 300px;
             height: 300px;
-
         }
+
     </style>
+    <script>
+    $(function(){
+        var $animate = $('#animate');
+        var $opposite = $('#opposite');
+        $(".wrap").hover(function(){
+            $animate.removeClass();
+            $opposite.removeClass();
+            $animate.addClass("test");
+            $opposite.addClass('test2');
+        },function(){
+            $animate.removeClass();
+            $opposite.removeClass();
+            $animate.addClass("test2");
+            $opposite.addClass('test');
+        });
+
+        $(".well-item").hover(function(){
+            $(this).find(".correct").children().removeClass();
+            $(this).find(".opposite").children().removeClass();
+            $(this).find(".correct").children().addClass("test");
+            $(this).find(".opposite").children().addClass('test2');
+        },function(){
+            $(this).find(".correct").children().removeClass();
+            $(this).find(".opposite").children().removeClass();
+            $(this).find(".correct").children().addClass("test2");
+            $(this).find(".opposite").children().addClass('test');
+        });
+
+    });
+    </script>
 </head>
 <body>
+    <div align="center" style=" position:fixed; left:0; top:0px; width:100%; z-index: -1;">
+           <canvas id="q" width="1440" height="900"></canvas>
+     </div>
     <div class="container">
         <div class="row" style="margin-top:10px;">
             <div class="col-md-4 logo">猿坞logo</div>
@@ -43,12 +79,12 @@
             <div class="col-md-7">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image:url('../image/1.jpg')"></div>
-                        <div class="swiper-slide" style="background-image:url('../image/2.jpg')"></div>
-                        <div class="swiper-slide" style="background-image:url('../image/3.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('image/1.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('image/2.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('image/3.jpg')"></div>
                     </div>
                     <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
+                    <!--<div class="swiper-pagination"></div>-->
                 </div>
             </div>
             <div class="col-md-5">
@@ -70,14 +106,95 @@
                 </article>
             </div>
         </div>
+        <div class="team">
+            <header>
+                <h1>BOSS</h1>
+            </header>
+            <div class="post-content">
+                <p>却回信息科技3位创始人,担任拯救世界的重任，凭借着高超的代码技术，引领世界潮流。</p>
+            </div>
+            <!--<section id="knowledge" class="viewBlock">
+                <div class="bookBox">
+                    <a class="lastBtn"><</a>
+                    <a class="nextBtn">></a>
+                    <div class="bookPage frist">
+                        <img src="image/bike.jpg" />
+                    </div>
+                    <div class="bookPage runPage">
+                        <div class="bookWord">
+                            <div>CEOasdasd</div>
+                        </div>
+                        <img src="image/bike.jpg" />
+                    </div>
+                    <div class="bookPage runPage">
+                        <div class="bookWord">	
+                            <div>CEOasdasd</div>
+                        </div>
+                        <img src="image/bike.jpg" />
+                    </div>
+                    <div class="bookPage runPage">
+                        <div class="bookWord">
+                            <div>CEOasdasd</div>
+                            <span class="pageNumber">3</span>
+                        </div>
+                        <img src="image/bike.jpg" />
+                    </div>
+                    <div class="bookPage last">
+                        <div class="bookWord">
+                        </div>
+                        <img src="image/bike.jpg" />
+                    </div>
+                </div>
+            </section>-->
+            <div class="well">
+                <div class="well-item">
+                    <div class="correct"><img  class="member_img" src="image/1.jpg" /></div>
+                    <div class="opposite">
+                        <div class="">
+                            <div class="opposite-content">
+                                <div class="opposite-content-text">
+                                    CEO
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well-item">
+                    <div class="correct"><img  class="member_img" src="image/1.jpg" /></div>
+                    <div class="opposite">
+                        <div class="">
+                            <div class="opposite-content">
+                                <div class="opposite-content-text">
+                                    CEO
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well-item">
+                    <div class="correct"><img  class="member_img" src="image/1.jpg" /></div>
+                    <div class="opposite">
+                        <div class="">
+                            <div class="opposite-content">
+                                <div class="opposite-content-text">
+                                    CEO
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </body>
-<script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
 <script src="lib/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="js/book.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script>
-    var swiper = new Swiper('.swiper-container', {
+    new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
+        initialSlide :1,
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
@@ -92,5 +209,35 @@
             slideShadows : true
         }
     });
+
+    $(document).ready(function() {
+        //设备宽度
+        var s = window.screen;
+            var width = q.width = s.width;
+        var height = q.height;
+        var yPositions = Array(300).join(0).split('');
+            var ctx = q.getContext('2d');
+        var draw = function() {
+            ctx.fillStyle = 'rgba(0,0,0,.05)';
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = 'green';/*代码颜色*/
+            ctx.font = '10pt Georgia';
+            yPositions.map(function(y, index) {
+                    text = String.fromCharCode(1e2 + Math.random() * 330);
+                    x = (index * 10) + 10;
+                    q.getContext('2d').fillText(text, x, y);
+                    if (y > Math.random() * 1e4) {
+                        yPositions[index] = 0;
+                        } else {
+                        yPositions[index] = y + 10;
+                        }
+            });
+        };
+        RunMatrix();
+        function RunMatrix() {
+            Game_Interval = setInterval(draw,30);
+        }
+    });
+
 </script>
 </html>
