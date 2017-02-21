@@ -2,16 +2,16 @@
     font-size:30px;
     height: 40px;
     line-height: 40px;
-    color: white;
+    color: #333;
 }
 .post-titile{
-    color: white;
+    color: #333;
 }
 .post-content{
     font-weight: 400;
     font-size: 15px;
     line-height: 2em;
-    color: white;
+    color: #333;
 }
 article{
     padding-top: 30px;
@@ -22,7 +22,30 @@ article{
 .team{
     clear: both;
     text-align: center;
-    color: white;
-    padding-top: 50px;
+    color: #333;
+    padding-top: 10px;
     margin-bottom: 10px;
+}
+@media (min-width: 768px){
+    .top_tab {
+        width: 750px;
+    }
+}
+@media (min-width: 992px){
+    .top_tab {
+        width: 970px;
+    }
+}
+.top_tab {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top:10px;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.6);
+    width: 100%;
 }
