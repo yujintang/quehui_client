@@ -172,7 +172,7 @@
             email=$('#user_mail').val(),
             content=$('#user_content').val();
         $('#sendmail').click(function () {
-            $.post("../../api/sendMail",{name:name,email:email,content:content},function (result) {
+            $.post("../../qh/api/api/sendMail",{name:name,email:email,content:content},function (result) {
                console.log(result);
             })
         });
