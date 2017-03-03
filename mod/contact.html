@@ -161,7 +161,7 @@
     $(document).ready(function () {
         var v_item_text = new Vue({
             el: $('#home')[0],
-            data: {
+            data:{
                 content:{}
             }
         });
@@ -175,7 +175,7 @@
         });
 
         $.get("../../qh/api/api/corp",{},function (result) {
-            v_item_text.$set('content',result.content)
+            v_item_text.content=new_content;
         })
     });
 </script>
