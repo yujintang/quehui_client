@@ -169,9 +169,11 @@
             email=$('#user_mail').val(),
             content=$('#user_content').val();
         $('#sendmail').click(function () {
-            $.post("../../api/sendMail",{name:name,email:email,content:content},function (result) {
-                console.log(result);
-            })
+            if(name&&email&&content){
+                $.post("../../qh/api/api/sendMail",{name:name,email:email,content:content},function (result) {
+                    console.log(result);
+                })
+            }
         });
 
         $.get("../../qh/api/api/corp",{},function (result) {
