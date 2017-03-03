@@ -165,12 +165,12 @@
                 content:{}
             }
         });
-        var name=$('#user_name').val(),
-            email=$('#user_mail').val(),
-            content=$('#user_content').val();
         $('#sendmail').click(function () {
+            var name=$('#user_name').val(),
+                email=$('#user_mail').val(),
+                user_content=$('#user_content').val();
             if(name&&email&&content){
-                $.post("../../qh/api/api/sendMail",{name:name,email:email,content:content},function (result) {
+                $.post("../../qh/api/api/sendMail",{name:name,email:email,content:user_content},function (result) {
                     console.log(result);
                 })
             }
