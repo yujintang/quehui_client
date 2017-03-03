@@ -169,10 +169,24 @@
             var name=$('#user_name').val(),
                 email=$('#user_mail').val(),
                 user_content=$('#user_content').val();
+            var data={
+                name:name,
+                email:email,
+                content:user_content
+            };
             if(name&&email&&user_content){
-                $.post("../../qh/api/api/sendMail",{name:name,email:email,content:user_content},function (result) {
-                    console.log(result);
-                })
+                $.ajax({
+                    url:'../../qh/api/api/sendMail',
+                    type:'post',
+                    dataType:'json',
+                    data:JSON.stringify(data),
+                    error: function(err){
+                        console.log(err);
+                    },
+                    success: function(msg){
+                        console.log(msg);
+                    }
+                });
             }
         });
 
