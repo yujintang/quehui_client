@@ -175,7 +175,7 @@
         });
 
         $.get("../../qh/api/api/corp",{},function (result) {
-            v_item_text.data.content=(result.content)
+            v_item_text.set('content',result.content)
         })
     });
 </script>
