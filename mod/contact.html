@@ -1,25 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!-- Page title -->
     <title>CleaThin</title>
-
-    <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.png">
-
-    <!-- Style -->
     <link rel="stylesheet" href="../css/theme.css">
-
 </head>
 <body>
-
-<header id="home" class="header">
+<header  class="header">
     <nav id="navigation" class="navbar affix">
         <div class="information hidden-sm hidden-xs">
             <div class="container">
@@ -80,7 +70,7 @@
             <!-- Page Title -->
             <div class="col-md-8">
                 <h1 class="title">联系我们</h1>
-                <div class="subtitle">There are many variations of passages </div>
+                <div class="subtitle">大家可以来搞基 </div>
             </div>
             <!-- /Page Title -->
 
@@ -99,7 +89,7 @@
 <!-- /Section: Page Header -->
 
 <!-- Main -->
-<main class="main-container">
+<main class="main-container" id="home">
     <div class="container">
 
         <div class="row">
@@ -133,15 +123,15 @@
             <!-- Address -->
             <div class="col-md-4 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.7s">
 
-                <h3 class="title">我们</h3>
+                <h3 class="title">{{content.name}}</h3>
                 <p>
-                   哈哈
+                   {{content.info}}
                 </p>
 
                 <ul class="contact-information">
-                    <li><i class="icon fa fa-fw fa-globe"></i><span>地址</span> 上海啊</li>
-                    <li><i class="icon fa fa-fw fa-envelope"></i><span>E-mail</span> 1584429008@qq.com</li>
-                    <li><i class="icon fa fa-fw fa-phone"></i><span>手机</span> +130 5253 1527</li>
+                    <li><i class="icon fa fa-fw fa-globe"></i><span>地址</span> {{content.address}}</li>
+                    <li><i class="icon fa fa-fw fa-envelope"></i><span>E-mail</span> {{content.email}}</li>
+                    <li><i class="icon fa fa-fw fa-phone"></i><span>手机</span> +{{content.phone}}</li>
                 </ul>
 
             </div>
@@ -166,19 +156,26 @@
 <script src="../js/wow.min.js"></script>
 <script src="../js/masonry.pkgd.min.js"></script>
 <script src="../js/general.js"></script>
+<script src="../js/vue.js"></script>
 <script>
-    $(function() {
+    $(document).ready(function () {
+        var v_item_text = new Vue({
+            el: $('#home')[0],
+            data: {
+                content:{}
+            }
+        });
         var name=$('#user_name').val(),
             email=$('#user_mail').val(),
             content=$('#user_content').val();
         $('#sendmail').click(function () {
             $.post("../../api/sendMail",{name:name,email:email,content:content},function (result) {
-               console.log(result);
+                console.log(result);
             })
         });
 
         $.get("../../qh/api/api/corp",{},function (result) {
-            console.log(result);
+            v_item_text.data.content=(result.content)
         })
     });
 </script>
