@@ -64,19 +64,14 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="index.html">主页</a></li>
                             <li><a href="mod/about.html">关于</a></li>
-                            <li><a href="#">产品</a></li>
+                            <li><a href="mod/single-project.html">产品</a></li>
                             <li><a href="mod/contact.html">联系我们</a></li>
                         </ul>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </nav>
-    <!-- /Navigation -->
-
 </header>
 
 <div class="slider owl-carousel owl-theme" style="margin-top: -1rem">
@@ -187,7 +182,7 @@
                 content: {}
             }
         });
-        $.get("../../qh/api/api/product", {}, function (result) {
+        $.get("../../qh_api/api/product", {}, function (result) {
             if (result.code == 1) {
                 var val = result.content;
                 $(val).each(function (k, v) {

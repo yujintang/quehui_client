@@ -140,7 +140,7 @@
             }
         });
         var detail_id=localStorage.detail_id;
-        $.get("../../qh/api/api/product/"+detail_id,{},function (result) {
+        $.get("../../qh_api/api/product/"+detail_id,{},function (result) {
             var val=result.content;
             $('.content').html(val.detail);
             v_item_text.content=val;
