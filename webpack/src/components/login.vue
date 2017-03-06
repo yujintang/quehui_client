@@ -27,7 +27,7 @@
           // .catch(function (error) {
           //     console.log(error);
           // });
-          location.href = '/qh/auth/github';
+          location.href = 'qh/auth/github';
 
         }
       }
