@@ -140,7 +140,7 @@
 
 		<!-- Section Content -->
 		<div class="row mt">
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" v-for="item in content" :data-wow-delay="item.index">
+			<div class="col-md-4 col-sm-6 fadeIn wow hss_detail" data-wow-duration="1.3s" v-for="item in content" :data-wow-delay="item.index">
 				<a href="mod/detail.html" class="project-item image-popup">
 					<div class="gallery-image">
 						<img :src="item.logo" :alt="item.name">
@@ -152,14 +152,10 @@
 				</a>
 			</div>
 		</div>
-		<!-- /Section content -->
 	</div>
 </section>
 
 </main>
-<!-- /Main -->
-
-<!-- Footer -->
 <footer class="footer section-small">
 <div style="text-align: center">底部</div>
 </footer>
@@ -184,21 +180,27 @@
 <script src="js/general.js"></script>
 <script src="js/vue.js"></script>
 <script>
-    var v_item_text = new Vue({
-        el: $('#home')[0],
-        data:{
-            content:{}
-        }
-    });
-    $.get("../../qh/api/api/product",{},function (result) {
-        if(result.code==1){
-            var val=result.content;
-			$(val).each(function (k,v) {
-                val[k].index=(0.2*k)+'s';
-            });
-            v_item_text.content=val;
+    $(document).ready(function () {
+        var v_item_text = new Vue({
+            el: $('#home')[0],
+            data: {
+                content: {}
+            }
+        });
+        $.get("../../qh/api/api/product", {}, function (result) {
+            if (result.code == 1) {
+                var val = result.content;
+                $(val).each(function (k, v) {
+                    val[k].index = (0.2 * k) + 's';
+                });
+                v_item_text.content = val;
 
-		}
+            }
+        });
+        $(document).on('click','.hss_detail',function (e) {
+            var len=($('.hss_detail').index(this));
+            localStorage.detail_id=v_item_text.content[len]._id;
+        });
     })
 </script>
 </body>
