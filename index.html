@@ -22,8 +22,8 @@
     <link rel="alternate stylesheet" href="css/theme-lavender-magenta.css" title="theme-lavender-magenta">
 </head>
 <body>
-
-<header id="home" class="header">
+<div id="home">
+<header class="header">
     <nav id="navigation" class="navbar affix">
         <div class="information hidden-sm hidden-xs">
             <div class="container">
@@ -58,13 +58,7 @@
                             <span class="icon-bar"></span>
 
                         </button>
-                        <!-- /Toggle Button -->
 
-                        <!-- Brand -->
-                        <!--                        <a href="#" class="brand">-->
-                        <!--                            <img src="images/logo.png" class="logo-big" alt="">-->
-                        <!--                            <img src="images/logo-small.png" class="logo-small" alt="">-->
-                        <!--                        </a>-->
                     </div>
                     <div id="main-menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -147,105 +141,19 @@
 		<!-- Section Content -->
 		<div class="row mt">
 
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s">
-				<a href="images/project-01.jpg" class="project-item image-popup">
+			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" v-for="item in content" data-wow-delay="0.2s">
+				<a :href="item.logo" class="project-item image-popup">
 					<div class="gallery-image">
-						<img src="images/project-01.jpg" alt="">
+						<img :src="item.logo" alt="{{item.name}}">
 					</div>
 					<div class="info">
-						<div class="h4 title">Buildings</div>
-						<p class="description"># web-design</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 12
-							<i class="fa fa-fw fa-share-square-o"></i> 4
-						</div>
+						<div class="h4 title">{{item.name}}</div>
+						<p class="description">{{item.info}}</p>
 					</div>
 				</a>
 			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.2s">
-				<a href="images/project-02.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="images/project-02.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">Nautical Nonsense</div>
-						<p class="description"># illustration</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 18
-							<i class="fa fa-fw fa-share-square-o"></i> 3
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.4s">
-				<a href="images/project-03.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="images/project-03.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">Coffee</div>
-						<p class="description"># creative</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 14
-							<i class="fa fa-fw fa-share-square-o"></i> 8
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.6s">
-				<a href="images/project-04.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="images/project-04.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">New York City</div>
-						<p class="description"># web-design</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 32
-							<i class="fa fa-fw fa-share-square-o"></i> 2
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.8s">
-				<a href="images/project-05.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="images/project-05.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">The Writer's Collection</div>
-						<p class="description"># creative</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 29
-							<i class="fa fa-fw fa-share-square-o"></i> 12
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="1.0s">
-				<a href="images/project-06.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="images/project-06.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">Overhead</div>
-						<p class="description"># illustration</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 17
-							<i class="fa fa-fw fa-share-square-o"></i> 3
-						</div>
-					</div>
-				</a>
-			</div>
-
 		</div>
 		<!-- /Section content -->
-
 	</div>
 </section>
 
@@ -262,7 +170,7 @@
 <div id="scroll-to-top" class="scroll-to-top">
 <i class="icon fa fa-angle-up"></i>
 </div>
-
+</div>
 <!-- SCRIPTS -->
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -277,16 +185,17 @@
 <script src="js/general.js"></script>
 <script src="js/vue.js"></script>
 <script>
-    var home= new Vue({
-        el:'#body',
-        data: {
-            content:[
-                {'hehe':'hehe'},
-                {'hehe':'hehe'},
-                {'hehe':'hehe'}
-            ]
+    var v_item_text = new Vue({
+        el: $('#home')[0],
+        data:{
+            content:{}
         }
     });
+    $.get("../../qh/api/api/product",{},function (result) {
+        if(result.message=='成功'){
+            v_item_text.content=result.content;
+		}
+    })
 </script>
 </body>
 </html>
