@@ -140,11 +140,10 @@
 
 		<!-- Section Content -->
 		<div class="row mt">
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" v-for="item in content" data-wow-delay="0.2s">
+			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" v-for="item in content" :data-wow-delay="item.index">
 				<a :href="item.logo" class="project-item image-popup">
 					<div class="gallery-image">
-						<img :src="item.logo" alt="{{item.name}}">
+						<img :src="item.logo" :alt="item.name">
 					</div>
 					<div class="info">
 						<div class="h4 title">{{item.name}}</div>
@@ -193,7 +192,12 @@
     });
     $.get("../../qh/api/api/product",{},function (result) {
         if(result.message=='成功'){
-            v_item_text.content=result.content;
+            var val=result.content;
+			$(val).each(function (k,v) {
+                val[k].index=(0.2*k)+'s';
+            });
+            v_item_text.content=val;
+
 		}
     })
 </script>
