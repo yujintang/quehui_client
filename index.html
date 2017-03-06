@@ -141,7 +141,7 @@
 		<!-- Section Content -->
 		<div class="row mt">
 			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" v-for="item in content" :data-wow-delay="item.index">
-				<a :href="item.logo" class="project-item image-popup">
+				<a :href="mod/detail.html" class="project-item image-popup">
 					<div class="gallery-image">
 						<img :src="item.logo" :alt="item.name">
 					</div>
@@ -191,7 +191,7 @@
         }
     });
     $.get("../../qh/api/api/product",{},function (result) {
-        if(result.message=='成功'){
+        if(result.code==1){
             var val=result.content;
 			$(val).each(function (k,v) {
                 val[k].index=(0.2*k)+'s';
