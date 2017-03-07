@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -30,12 +30,11 @@ module.exports = {
     proxyTable: {
       '/qh': {
         target: 'http://192.168.3.106:12121',
-        // target: 'http://www.7diary.com',
+        // target: 'http://www.7diary.com/qh_api',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
-          '^/qh': '/',
-          // '^/qh': '/qh/api'
+          '^/qh': '/'
         }
       }
     },

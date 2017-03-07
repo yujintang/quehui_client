@@ -14,6 +14,18 @@
           msg: '登录'
         }
       },
+      created () {
+        // 组件创建完后获取数据，
+        // 此时 data 已经被 observed 了
+        // this.fetchData()
+        axios.get('qh_api/api/corp',{})
+        .then(function (res) {
+            console.log(res)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+      },
 
       methods: {
         login: function() {
