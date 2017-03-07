@@ -64,7 +64,7 @@
         // 此时 data 已经被 observed 了
         // this.fetchData()
         var This = this;
-        axios.get('/qh/api/corp',{})
+        axios.get('../../qh/api/corp',{})
         .then(function (response) {
             if (response && response.data.code == 1) {
               var content = response.data.content;
