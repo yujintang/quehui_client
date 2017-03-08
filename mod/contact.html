@@ -180,15 +180,13 @@
                         console.log(textStatus);
                         console.log(errorThrown);
                     },
-                    success: function(msg){
-                       if(msg.code==1){
-                           layer.msg('感谢您的来信',{time:1200});
-                           $('#user_name').val('');
-                           $('#user_mail').val('');
-                           $('#user_content').val('');
-                       }else{
-                           layer.msg(msg.err,{time:1200});
-                       }
+                    success: function(msg) {
+                        layer.msg(msg.message, {time: 1200});
+                        if (msg.code == 1) {
+                            $('#user_name').val('');
+                            $('#user_mail').val('');
+                            $('#user_content').val('');
+                        }
                     }
                 });
             }else {
