@@ -187,10 +187,12 @@
                            $('#user_mail').val('');
                            $('#user_content').val('');
                        }else{
-                           layer.msg('信息发送失败',{time:1200});
+                           layer.msg(msg.err,{time:1200});
                        }
                     }
                 });
+            }else {
+                layer.msg('请输入完整的信息',{time:1200});
             }
         });
 
