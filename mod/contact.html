@@ -176,7 +176,7 @@
                     dataType:'json',
                     data:data,
                     error: function(msg, textStatus, errorThrown){
-                        layer.msg(msg.message, {time: 1200});
+                        layer.msg(msg.responseText.message, {time: 1200});
                     },
                     success: function(msg) {
                         layer.msg(msg.message, {time: 1200});
@@ -187,8 +187,6 @@
                         }
                     }
                 });
-            }else {
-                layer.msg('请输入完整的信息',{time:1200});
             }
         });
 
