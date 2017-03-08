@@ -168,26 +168,23 @@
                 email:email,
                 content:user_content
             };
-
-            if(name&&email&&user_content){
-                $.ajax({
-                    url:'../../qh_api/api/sendMail',
-                    type:'post',
-                    dataType:'json',
-                    data:data,
-                    error: function(msg, textStatus, errorThrown){
-                        layer.msg(msg.responseText.message, {time: 1200});
-                    },
-                    success: function(msg) {
-                        layer.msg(msg.message, {time: 1200});
-                        if (msg.code == 1) {
-                            $('#user_name').val('');
-                            $('#user_mail').val('');
-                            $('#user_content').val('');
-                        }
+            $.ajax({
+                url:'../../qh_api/api/sendMail',
+                type:'post',
+                dataType:'json',
+                data:data,
+                error: function(msg, textStatus, errorThrown){
+                    layer.msg(msg.responseText.message, {time: 1200});
+                },
+                success: function(msg) {
+                    layer.msg(msg.message, {time: 1200});
+                    if (msg.code == 1) {
+                        $('#user_name').val('');
+                        $('#user_mail').val('');
+                        $('#user_content').val('');
                     }
-                });
-            }
+                }
+            });
         });
 
         $.get("../../qh_api/api/corp",{},function (result) {
