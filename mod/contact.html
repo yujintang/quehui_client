@@ -149,6 +149,7 @@
 <script src="../js/masonry.pkgd.min.js"></script>
 <script src="../js/general.js"></script>
 <script src="../js/vue.js"></script>
+<script src="../js/layer/layer.js"></script>
 <script>
     $(document).ready(function () {
         var v_item_text = new Vue({
@@ -180,7 +181,14 @@
                         console.log(errorThrown);
                     },
                     success: function(msg){
-                        console.log(msg);
+                       if(msg.code==1){
+                           layer.msg('感谢您的来信',{time:1200});
+                           $('#user_name').val('');
+                           $('#user_mail').val('');
+                           $('#user_content').val('');
+                       }else{
+                           layer.msg('信息发送失败',{time:1200});
+                       }
                     }
                 });
             }
