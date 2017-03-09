@@ -40,7 +40,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="../index.html">主页</a></li>
                             <li><a href="../mod/about.html">关于</a></li>
-                            <li><a href="portfolio-3-col.html">产品</a></li>
+                            <li><a href="portfolio.html">产品</a></li>
                             <li><a href="../mod/contact.html">联系我们</a></li>
                         </ul>
                     </div>
@@ -154,7 +154,7 @@
         var v_item_text = new Vue({
             el: $('#home')[0],
             data:{
-                content:{}
+                content:JSON.parse(localStorage.corp_info)
             }
         });
         $('#sendmail').click(function () {
@@ -185,10 +185,6 @@
                 }
             });
         });
-
-        $.get("../../qh_api/api/corp",{},function (result) {
-            v_item_text.content=result.content;
-        })
     });
 </script>
 </body>

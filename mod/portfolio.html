@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="../css/theme.css">
 </head>
 <body>
+<div id="home">
 <header class="header">
     <nav id="navigation" class="navbar affix">
         <div class="information hidden-sm hidden-xs">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <a href="#"><span class="icon icon_mail_alt"></span> 1584429008@qq.com</a>
-                        <a href="#"><span class="icon icon_phone"></span> 13052531527</a>
+                        <a href="#"><span class="icon icon_mail_alt"></span> {{corp_info.email}}</a>
+                        <a href="#"><span class="icon icon_phone"></span> {{corp_info.phone}}</a>
                     </div>
                     <!-- /Feedback -->
                 </div>
@@ -204,9 +205,31 @@
 <div id="scroll-to-top" class="scroll-to-top">
     <i class="icon fa fa-angle-up"></i>
 </div>
+</div>
 <script src="../js/jquery-2.2.0.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.stellar.min.js"></script>
 <script src="../js/general.js"></script>
+<script src="../js/vue.js"></script>
+<script>
+    $(document).ready(function () {
+        var v_item_text = new Vue({
+            el: $('#home')[0],
+            data:{
+                content:{},
+                corp_info:JSON.parse(localStorage.orp_info)
+            }
+        });
+        $.get("../../qh_api/api/product", {}, function (result) {
+            if (result.code == 1) {
+                var val = result.content;
+                $(val).each(function (k,v) {
+                    val[k].index = (0.2 * k) + 's';
+                });
+                v_item_text.content = val;
+            }
+        });
+    })
+</script>
 </body>
 </html>

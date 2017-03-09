@@ -29,8 +29,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <a href="#"><span class="icon icon_mail_alt"></span> 1584429008@qq.com</a>
-                        <a href="#"><span class="icon icon_phone"></span> 13052531527</a>
+                        <a href="#"><span class="icon icon_mail_alt"></span> {{corp_info.email}}</a>
+                        <a href="#"><span class="icon icon_phone"></span> {{corp_info.phone}}</a>
                     </div>
                     <!-- /Feedback -->
                 </div>
@@ -64,7 +64,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="index.html">主页</a></li>
                             <li><a href="mod/about.html">关于</a></li>
-                            <li><a href="mod/portfolio-3-col.html">产品</a></li>
+                            <li><a href="mod/portfolio.html">产品</a></li>
                             <li><a href="mod/contact.html">联系我们</a></li>
                         </ul>
                     </div>
@@ -175,18 +175,22 @@
         var v_item_text = new Vue({
             el: $('#home')[0],
             data: {
-                content: {}
+                content: {},
+                corp_info:{}
             }
         });
         $.get("../../qh_api/api/product", {}, function (result) {
             if (result.code == 1) {
                 var val = result.content;
-                $(val).each(function (k, v) {
+                $(val).each(function (k,v) {
                     val[k].index = (0.2 * k) + 's';
                 });
                 v_item_text.content = val;
-
             }
+        });
+        $.get("../../qh_api/api/corp",{},function (result) {
+            localStorage.orp_info=JSON.stringify(result.content);
+            v_item_text.corp_info=result.content;
         });
         $(document).on('click','.hss_detail',function (e) {
             var len=($('.hss_detail').index(this));
