@@ -15,8 +15,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <a href="#"><span class="icon icon_mail_alt"></span> {{corp_info.email}}</a>
-                        <a href="#"><span class="icon icon_phone"></span> {{corp_info.phone}}</a>
+                        <a href="#"><span class="icon icon_mail_alt"></span> {{content.email}}</a>
+                        <a href="#"><span class="icon icon_phone"></span> {{content.phone}}</a>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
         var v_item_text = new Vue({
             el: $('#home')[0],
             data:{
-                corp_info:JSON.parse(localStorage.corp_info)
+                content:JSON.parse(localStorage.corp_info)
             }
         });
         $('#sendmail').click(function () {
