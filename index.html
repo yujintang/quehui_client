@@ -77,29 +77,29 @@
 <div class="slider owl-carousel owl-theme" style="margin-top: -1rem">
 
 <!-- Slide -->
-<div class="item mask" :style="{background: url((banner.large)) no-repeat center top / cover;background-size:100% 120%}" data-stellar-background-ratio="0.4">
+<div class="item mask" :style="src" data-stellar-background-ratio="0.4">
 
 	<div class="container height-100p">
-		<div class="row height-100p">
+    <div class="row height-100p">
 
-			<div class="col-sm-6 col-md-6 height-100p bounceInLeft wow" data-wow-duration="1.3s" data-wow-delay="0.3s" data-stellar-ratio="0.7">
-				<div class="vertical-middle">
-					<h1 class="text-white">Welcome to <span class="text-theme">QueHui</span></h1>
-					<div class="text-white h4">
-						{{banner.info}}
-					</div>
-					<a href="#projects" class="smooth-scroll btn btn-theme">最新 产品</a>
-				</div>
-			</div>
+        <div class="col-sm-6 col-md-6 height-100p bounceInLeft wow" data-wow-duration="1.3s" data-wow-delay="0.3s" data-stellar-ratio="0.7">
+            <div class="vertical-middle">
+                <h1 class="text-white">Welcome to <span class="text-theme">QueHui</span></h1>
+                <div class="text-white h4">
+                    {{banner.info}}
+                </div>
+                <a href="#projects" class="smooth-scroll btn btn-theme">最新 产品</a>
+            </div>
+        </div>
 
-			<div class="col-sm-6 col-md-4 col-md-offset-2 height-100p bounceInRight wow" data-wow-duration="1.3s" data-stellar-ratio="0.8">
-				<div class="vertical-middle">
-					<img :src="banner.small" class="img-responsive" alt="">
-				</div>
-			</div>
+        <div class="col-sm-6 col-md-4 col-md-offset-2 height-100p bounceInRight wow" data-wow-duration="1.3s" data-stellar-ratio="0.8">
+            <div class="vertical-middle">
+                <img :src="banner.small" class="img-responsive" alt="">
+            </div>
+        </div>
 
-		</div>
-	</div>
+    </div>
+    </div>
 
 </div>
 <!-- /Slide -->
@@ -176,7 +176,8 @@
             data: {
                 content: {},
                 corp_info:{},
-                banner:{}
+                banner:{},
+                src:{}
             }
         });
         $.get("../../qh_api/api/product", {}, function (result) {
@@ -194,7 +195,12 @@
         });
         $.get("../../qh_api/api/banner",{},function (result) {
             v_item_text.banner=result.content;
+            v_item_text.src={
+                background:'url('+result.content.large+') no-repeat center top / cover',
+                backgroundSize:'100% 120%'
+            }
         });
+
         $(document).on('click','.hss_detail',function (e) {
             var len=($('.hss_detail').index(this));
             localStorage.detail_id=v_item_text.content[len]._id;
