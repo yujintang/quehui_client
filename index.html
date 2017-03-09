@@ -77,7 +77,7 @@
 <div class="slider owl-carousel owl-theme" style="margin-top: -1rem">
 
 <!-- Slide -->
-<div class="item mask" style="background: url(images/home.jpg) no-repeat center top / cover;background-size:100% 120%" data-stellar-background-ratio="0.4">
+<div class="item mask" :style="{background: url(banner.large) no-repeat center top / cover;background-size:100% 120%}" data-stellar-background-ratio="0.4">
 
 	<div class="container height-100p">
 		<div class="row height-100p">
@@ -86,16 +86,15 @@
 				<div class="vertical-middle">
 					<h1 class="text-white">Welcome to <span class="text-theme">QueHui</span></h1>
 					<div class="text-white h4">
-						It is a long established fact that a reader will be distracted by the readable content of a
-						page when looking at its layout.
+						{{banner.info}}
 					</div>
-					<a href="#projects" class="smooth-scroll btn btn-theme">Start Watching</a>
+					<a href="#projects" class="smooth-scroll btn btn-theme">最新 产品</a>
 				</div>
 			</div>
 
 			<div class="col-sm-6 col-md-4 col-md-offset-2 height-100p bounceInRight wow" data-wow-duration="1.3s" data-stellar-ratio="0.8">
 				<div class="vertical-middle">
-					<img src="images/devices.png" class="img-responsive" alt="">
+					<img :src="banner.small" class="img-responsive" alt="">
 				</div>
 			</div>
 
@@ -176,7 +175,8 @@
             el: $('#home')[0],
             data: {
                 content: {},
-                corp_info:{}
+                corp_info:{},
+                banner:{}
             }
         });
         $.get("../../qh_api/api/product", {}, function (result) {
@@ -191,6 +191,9 @@
         $.get("../../qh_api/api/corp",{},function (result) {
             localStorage.orp_info=JSON.stringify(result.content);
             v_item_text.corp_info=result.content;
+        });
+        $.get("../../qh_api/api/banner",{},function (result) {
+            v_item_text.banner=result.content;
         });
         $(document).on('click','.hss_detail',function (e) {
             var len=($('.hss_detail').index(this));
