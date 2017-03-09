@@ -90,101 +90,11 @@
 
             <!-- Project -->
             <div class="row">
-
                 <div class="projects-list">
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-01.jpg" class="image-popup">
+                    <div class="col-sm-4 col-xs-12 project-image hss_detail" v-for="item in content">
+                        <a href="detail.html" class="image-popup">
                             <div class="gallery-image">
-                                <img src="../images/project-01.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-02.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-02.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-03.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-03.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-04.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-04.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-05.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-05.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-06.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-06.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-07.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-07.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-08.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-08.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-09.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-09.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-10.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-10.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-11.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-11.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 project-image">
-                        <a href="../images/project-12.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="../images/project-12.jpg">
+                                <img ：src="item.logo">
                             </div>
                         </a>
                     </div>
@@ -208,7 +118,12 @@
 </div>
 <script src="../js/jquery-2.2.0.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.magnific-popup.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
 <script src="../js/jquery.stellar.min.js"></script>
+<script src="../js/wow.min.js"></script>
+<script src="../js/masonry.pkgd.min.js"></script>
 <script src="../js/general.js"></script>
 <script src="../js/vue.js"></script>
 <script>
@@ -222,12 +137,12 @@
         });
         $.get("../../qh_api/api/product", {}, function (result) {
             if (result.code == 1) {
-                var val = result.content;
-                $(val).each(function (k,v) {
-                    val[k].index = (0.2 * k) + 's';
-                });
-                v_item_text.content = val;
+                v_item_text.content = result.content;
             }
+        });
+        $(document).on('click','.hss_detail',function (e) {
+            var len=($('.hss_detail').index(this));
+            localStorage.detail_id=v_item_text.content[len]._id;
         });
     })
 </script>
