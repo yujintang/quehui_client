@@ -66,7 +66,7 @@
             <!-- Page Title -->
             <div class="col-md-8">
                 <h1 class="title">产品</h1>
-                <div class="subtitle">There are many variations of passages </div>
+                <div class="subtitle">全部 产品</div>
             </div>
             <!-- /Page Title -->
 
@@ -132,7 +132,7 @@
             el: $('#home')[0],
             data:{
                 content:{},
-                corp_info:JSON.parse(localStorage.orp_info)
+                corp_info:JSON.parse(localStorage.corp_info)
             }
         });
         $.get("../../qh_api/api/product", {}, function (result) {

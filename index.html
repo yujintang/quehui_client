@@ -121,7 +121,7 @@
 			<div class="col-md-6">
 				<header>
 					<h2 class="section-title"><span class="text-theme">最</span> 新</h2>
-					<p class="section-subtitle">最新最新最新产品</p>
+					<p class="section-subtitle">却回信息科技 最新产品</p>
 				</header>
 			</div>
 
@@ -190,7 +190,7 @@
             }
         });
         $.get("../../qh_api/api/corp",{},function (result) {
-            localStorage.orp_info=JSON.stringify(result.content);
+            localStorage.corp_info=JSON.stringify(result.content);
             v_item_text.corp_info=result.content;
         });
         $.get("../../qh_api/api/banner",{},function (result) {

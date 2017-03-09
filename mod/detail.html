@@ -16,8 +16,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
-                            <a href="#"><span class="icon icon_mail_alt"></span> 1584429008@qq.com</a>
-                            <a href="#"><span class="icon icon_phone"></span> 13052531527</a>
+                            <a href="#"><span class="icon icon_mail_alt"></span> {{corp_info.email}}</a>
+                            <a href="#"><span class="icon icon_phone"></span> {{corp_info.phone}}</a>
                         </div>
                         <!-- /Feedback -->
                     </div>
@@ -72,7 +72,7 @@
                 <!-- Page Title -->
                 <div class="col-md-8">
                     <h1 class="title">产品 - 详情</h1>
-                    <div class="subtitle">产品 - 详情</div>
+                    <div class="subtitle">产品 - {{content.name}}</div>
                 </div>
                 <!-- /Page Title -->
 
@@ -136,7 +136,8 @@
         var v_item_text = new Vue({
             el: $('#home')[0],
             data: {
-                content: {}
+                content: {},
+                corp_info:JSON.parse(localStorage.corp_info)
             }
         });
         var detail_id=localStorage.detail_id;
