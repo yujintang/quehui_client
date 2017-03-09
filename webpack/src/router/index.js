@@ -13,5 +13,17 @@ export default [
     {
         path: '/Hello',
         component: App.components.hello
+    },
+    {
+        path: '/index',
+        component: App.components.index
+    },
+    {
+        path: '/products',
+        component: App.components.products
+    },
+    {
+        path: '/product/:id',
+        component: App.components.product
     }
 ]

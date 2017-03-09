@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/qh': {
-        target: 'http://192.168.3.106:12121',
+        target: 'http://120.27.115.24:3000',
         // target: 'http://www.7diary.com/qh_api',
         secure: false,
         changeOrigin: true,

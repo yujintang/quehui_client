@@ -6,12 +6,18 @@
   import home from './components/home.vue'
   import login from './components/login.vue'
   import hello from './components/Hello.vue'
+  import index from './components/index.vue'
+  import products from './components/products.vue'
+  import product from './components/product.vue'
 
   export default {
       components: {
           home,
           login,
-          hello
+          hello,
+          index,
+          products,
+          product
       }
   }
 </script>

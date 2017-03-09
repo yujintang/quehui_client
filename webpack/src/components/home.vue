@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>后台管理</h1>
+    <h1>公司信息</h1>
     <el-row>
       <el-col :span="8">
         <div id="address">
@@ -56,7 +56,8 @@
         return {
           loading: false,
           input: '1',
-          content: ''
+          content: '',
+          url_qiniu: ''
         }
       },
       created () {
@@ -64,7 +65,7 @@
         // 此时 data 已经被 observed 了
         // this.fetchData()
         var This = this;
-        axios.get('qh/api/corp',{})
+        axios.get('../qh/api/corp',{})
         .then(function (response) {
             if (response && response.data.code == 1) {
               var content = response.data.content;
@@ -81,22 +82,22 @@
       },
       methods: {
         save: function() {
-          
-
-          
-
-          // axios.post('/qh/api/auth_upload',{
-          //   formData: formData
-          // })
-          // .then(function (response) {
-          //     console.log(response)
-          //     if (response && response.data.code == 1) {
-          //       // This.$router.push('home')
-          //     }
-          // })
-          // .catch(function (error) {
-          //     console.log(error);
-          // });
+          axios.post('../qh/api/auth_corp',{
+            name: this.content.name,
+            logo: this.content.logo,
+            info: this.content.info,
+            address: this.content.address,
+            email: this.content.email,
+            phone: this.content.phone
+          })
+          .then(function (response) {
+              if (response && response.data.code == 1) {
+                location.reload();
+              }
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
         },
         openFile: function (form) {
             var This = this;
@@ -121,15 +122,14 @@
 
                 axios({
                   method: 'post',
-                  url: '/qh/api/auth_upload',
+                  url: '../qh/api/auth_upload',
                   data: formData
                 })
                 .then(function (res) {
-                    console.log(res)
+                  if (res && res.data.content.list[0]){
+                    This.content.logo = res.data.content.list[0].url_qiniu
+                  }
                 })
-                
-                this.content.logo = this.createObjectURL(file)
-
             }
             else
                 alert("请确保文件为图像类型");
