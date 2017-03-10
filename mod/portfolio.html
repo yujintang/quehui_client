@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="projects-list">
                     <div class="col-sm-4 col-xs-12 project-image hss_detail" v-for="item in content">
-                        <a href="detail.html" class="image-popup">
+                        <a class="image-popup">
                             <div class="gallery-image">
                                 <img :src="item.logo">
                             </div>
@@ -140,10 +140,10 @@
                 v_item_text.content = result.content;
             }
         });
-        $(document).on('click','.hss_detail',function (e) {
-            var len=($('.hss_detail').index(this));
-            localStorage.detail_id=v_item_text.content[len]._id;
-        });
+//        $(document).on('click','.hss_detail',function (e) {
+//            var len=($('.hss_detail').index(this));
+//            localStorage.detail_id=v_item_text.content[len]._id;
+//        });
     })
 </script>
 </body>

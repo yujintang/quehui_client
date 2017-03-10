@@ -135,7 +135,7 @@
 		<!-- Section Content -->
 		<div class="row mt">
 			<div class="col-md-4 col-sm-6 fadeIn wow hss_detail" data-wow-duration="1.3s" v-for="item in content" :data-wow-delay="item.index">
-				<a href="mod/detail.html" class="project-item image-popup">
+				<a  class="project-item image-popup">
 					<div class="gallery-image">
 						<img :src="item.logo" :alt="item.name">
 					</div>
@@ -201,10 +201,10 @@
             }
         });
 
-        $(document).on('click','.hss_detail',function (e) {
-            var len=($('.hss_detail').index(this));
-            localStorage.detail_id=v_item_text.content[len]._id;
-        });
+//        $(document).on('click','.hss_detail',function (e) {
+//            var len=($('.hss_detail').index(this));
+//            localStorage.detail_id=v_item_text.content[len]._id;
+//        });
     })
 </script>
 </body>
