@@ -65,7 +65,7 @@
         // 此时 data 已经被 observed 了
         // this.fetchData()
         var This = this;
-        axios.get('../qh/api/corp',{})
+        axios.get('../qh_api/api/corp',{})
         .then(function (response) {
             if (response && response.data.code == 1) {
               var content = response.data.content;
@@ -82,7 +82,7 @@
       },
       methods: {
         save: function() {
-          axios.post('../qh/api/auth_corp',{
+          axios.post('../qh_api/api/auth_corp',{
             name: this.content.name,
             logo: this.content.logo,
             info: this.content.info,
@@ -122,7 +122,7 @@
 
                 axios({
                   method: 'post',
-                  url: '../qh/api/auth_upload',
+                  url: '../qh_api/api/auth_upload',
                   data: formData
                 })
                 .then(function (res) {

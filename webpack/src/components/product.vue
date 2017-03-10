@@ -35,7 +35,7 @@
       created () {
         var This = this;
         if (this.$route.params && this.$route.params.id != 123) {
-            axios.get('../qh/api/product/'+this.$route.params.id,{})
+            axios.get('../qh_api/api/product/'+this.$route.params.id,{})
             .then(function (res) {
                 console.log(res)
                 if (res && res.data.code == 1) {
@@ -56,7 +56,7 @@
         save: function() {
             var This = this;
             if (this.$route.params.id == ':123') {
-                axios.post('../qh/api/auth_product',{
+                axios.post('../qh_api/api/auth_product',{
                     name: this.content.name || '',
                     info: this.content.info || '',
                     logo: this.content.logo || '',
@@ -72,7 +72,7 @@
                     console.log(error);
                 });
             }else{
-                axios.put('../qh/api/auth_product/'+this.$route.params.id,{
+                axios.put('../qh_api/api/auth_product/'+this.$route.params.id,{
                     name: this.content.name || '',
                     info: this.content.info || '',
                     logo: this.content.logo || ''
@@ -111,7 +111,7 @@
 
                 axios({
                   method: 'post',
-                  url: '../qh/api/auth_upload',
+                  url: '../qh_api/api/auth_upload',
                   data: formData
                 })
                 .then(function (res) {

@@ -30,24 +30,15 @@
       },
       created () {
         // 组件创建完后获取数据，
-        // 此时 data 已经被 observed 了
-        // this.fetchData()
-        // axios.get('../qh/api/corp',{})
-        // .then(function (res) {
-        //     console.log(res)
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
       },
 
       methods: {
         github_login: function() {
-          location.href = '../qh/auth/github';
+          location.href = '../qh_api/auth/github';
         },
         login: function() {
           var This = this
-          axios.post('../qh/auth/login',{
+          axios.post('../qh_api/auth/login',{
             email: this.account,
             password: this.password
           })

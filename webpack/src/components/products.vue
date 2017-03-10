@@ -30,7 +30,7 @@
       },
       created () {
         var This = this;
-        axios.get('../qh/api/product',{})
+        axios.get('../qh_api/api/product',{})
         .then(function (res) {
             if (res && res.data.code == 1) {
               var content = res.data.content;
@@ -47,7 +47,7 @@
       },
       methods: {
         deletethis: function(item) {
-            axios.patch('../qh/api/auth_product/'+item._id,{})
+            axios.patch('../qh_api/api/auth_product/'+item._id,{})
             .then(function (res) {
                 if (res && res.data.code == 1) {
                     location.reload();
