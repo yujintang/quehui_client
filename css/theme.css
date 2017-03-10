@@ -830,7 +830,7 @@ label.error {
   -webkit-animation: 0.5s animationZoomIn;
   -o-animation: 0.5s animationZoomIn;
   animation: 0.5s animationZoomIn;
-  opacity: 1.0;
+  /*opacity: 1.0;*/
 }
 .gallery-image:hover img {
   -webkit-transform: scale(1.2);
